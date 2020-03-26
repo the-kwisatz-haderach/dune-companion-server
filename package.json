@@ -14,7 +14,16 @@
   "keywords": [],
   "author": "Gustaf Lundström",
   "license": "ISC",
-  "dependencies": {},
+  "dependencies": {
+    "@marblejs/core": "^3.0.2",
+    "@marblejs/middleware-body": "^3.0.2",
+    "@marblejs/middleware-logger": "^3.0.2",
+    "@types/mongoose": "^5.7.7",
+    "fp-ts": "^2.5.3",
+    "mongoose": "^5.9.6",
+    "rxjs": "^6.5.4",
+    "webpack-node-externals": "^1.7.2"
+  },
   "devDependencies": {
     "@babel/core": "^7.8.4",
     "@babel/preset-env": "^7.8.4",
@@ -24,6 +33,7 @@
     "babel-loader": "^8.0.6",
     "babel-minify-webpack-plugin": "^0.3.1",
     "clean-webpack-plugin": "^3.0.0",
+    "dotenv": "^8.2.0",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.10.0",
     "eslint-config-standard": "^14.1.0",
