@@ -5,7 +5,7 @@ async function connectDatabase() {
     useNewUrlParser: true,
     useUnifiedTopology: true
   })
-  console.log('connected to database')
+  console.log('Connected to mongo database')
 }
 
 export default connectDatabase

@@ -3,7 +3,13 @@
     "es6": true,
     "node": true
   },
-  "extends": ["standard", "plugin:jest/recommended"],
+  "extends": [
+    "standard",
+    "plugin:jest/recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
+    "prettier/@typescript-eslint"
+  ],
   "globals": {
     "Atomics": "readonly",
     "SharedArrayBuffer": "readonly"
@@ -15,6 +21,9 @@
   },
   "plugins": ["prettier", "@typescript-eslint", "jest"],
   "rules": {
-    "space-before-function-paren": "off"
+    "space-before-function-paren": "off",
+    "@typescript-eslint/interface-name-prefix": "off",
+    "no-useless-catch": "off",
+    "no-return-assign": "off"
   }
 }

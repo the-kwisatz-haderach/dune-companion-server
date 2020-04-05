@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-namespace */
 import { config } from 'dotenv'
 
 declare global {
@@ -5,6 +6,7 @@ declare global {
     interface Global {
       config: {
         MONGO_URI: string
+        REDIS_URI: string
       }
     }
   }
@@ -13,5 +15,6 @@ declare global {
 const { parsed } = config({ path: '.env' })
 
 global.config = {
-  MONGO_URI: parsed.MONGO_URI
+  MONGO_URI: parsed.MONGO_URI,
+  REDIS_URI: parsed.REDIS_URI
 }

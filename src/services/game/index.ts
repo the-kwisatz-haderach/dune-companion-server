@@ -1,6 +1,3 @@
-import { combineRoutes } from '@marblejs/core'
-import { getGames$, postGame$, putGame$, getGame$ } from './game.effects'
+import { game$ } from './game.router'
 
-export const game$ = combineRoutes('/game', {
-  effects: [getGames$, postGame$, putGame$, getGame$]
-})
+export { game$ }

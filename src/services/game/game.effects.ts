@@ -1,58 +1,63 @@
 import { r } from '@marblejs/core'
-import { map, mergeMap } from 'rxjs/operators'
-import DatabaseAdapter from '../../../db/DatabaseAdapter'
-import { IUser } from '../../../db/models/user.model'
+import { map, mergeMap, switchMap } from 'rxjs/operators'
+import GameModule from './game.module'
+import { GameConditions } from '../../../engine/interfaces'
+import cacheUtils from './game.utils'
 
-export const getGames$ = r.pipe(
-  r.matchPath('/'),
-  r.matchType('GET'),
-  r.useEffect(req$ =>
-    req$.pipe(
-      mergeMap(DatabaseAdapter.findAll),
-      map(users => ({ body: users }))
-    )
-  )
-)
-
-export const getGame$ = r.pipe(
-  r.matchPath('/:id'),
-  r.matchType('GET'),
-  r.useEffect(req$ =>
-    req$.pipe(
-      map((req: any) => req.params.id),
-      mergeMap(DatabaseAdapter.findOne),
-      map(user => ({ body: user }))
-    )
-  )
-)
-
-export const postGame$ = r.pipe(
+export const createGame$ = r.pipe(
   r.matchPath('/'),
   r.matchType('POST'),
   r.useEffect(req$ =>
     req$.pipe(
-      map(req => req.body as IUser),
-      mergeMap(DatabaseAdapter.create),
-      map(result => ({ body: result }))
+      map(({ body }) => body as GameConditions),
+      mergeMap(GameModule.createGame),
+      map(id => ({ body: id }))
     )
   )
 )
 
-export const putGame$ = r.pipe(
+export const getGameDetails$ = r.pipe(
   r.matchPath('/:id'),
-  r.matchType('PUT'),
+  r.matchType('GET'),
   r.useEffect(req$ =>
     req$.pipe(
-      map(
-        ({ body, params }: any) =>
-          ({
-            id: params.id,
-            username: body.username,
-            creationDate: body.creationDate
-          } as IUser)
+      map(({ params }: any) => params.id as string),
+      switchMap(cacheUtils.get),
+      map(game => ({ body: game }))
+    )
+  )
+)
+
+export const addPlayer$ = r.pipe(
+  r.matchPath('/:id/players'),
+  r.matchType('POST'),
+  r.useEffect(req$ =>
+    req$.pipe(
+      map(({ params, body }: any) => ({
+        gameId: params.id as string,
+        playerName: body as string
+      })),
+      mergeMap(({ gameId, playerName }) =>
+        GameModule.addPlayer(gameId, playerName)
       ),
-      mergeMap(DatabaseAdapter.create),
-      map(result => ({ body: result }))
+      map(playerId => ({ body: playerId }))
+    )
+  )
+)
+
+export const deletePlayer$ = r.pipe(
+  r.matchPath('/:id/players/:pid'),
+  r.matchType('DELETE'),
+  r.useEffect(req$ =>
+    req$.pipe(
+      map(({ params }: any) => ({
+        gameId: params.id as string,
+        playerId: params.pid as string
+      })),
+      mergeMap(({ gameId, playerId }) =>
+        GameModule.removePlayer(gameId, playerId)
+      ),
+      map(players => ({ body: players }))
     )
   )
 )
