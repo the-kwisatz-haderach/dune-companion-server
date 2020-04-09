@@ -1,3 +1,3 @@
-import { game$ } from './game.router'
+import { createGame$, addPlayer$ } from './game.effects'
 
-export { game$ }
+export default [createGame$, addPlayer$]

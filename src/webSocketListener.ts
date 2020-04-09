@@ -1,14 +1,7 @@
-import { webSocketListener, WsEffect } from '@marblejs/websockets'
-import { matchEvent } from '@marblejs/core'
-import { mapTo } from 'rxjs/operators'
-
-const helloWorld$: WsEffect = event$ =>
-  event$.pipe(
-    matchEvent('HELLO'),
-    mapTo({ type: 'HELLO', payload: 'Hello, world!' })
-  )
+import { webSocketListener } from '@marblejs/websockets'
+import gameEffects from './services/game'
 
 export default webSocketListener({
   middlewares: [],
-  effects: [helloWorld$]
+  effects: gameEffects
 })
