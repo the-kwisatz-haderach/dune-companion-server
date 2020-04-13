@@ -7,9 +7,9 @@ export interface GameModuleMethod<U, T = undefined> {
 }
 
 export enum Events {
-  CREATE_GAME = 'create_game',
-  ADD_PLAYER = 'add_player',
-  DELETE_PLAYER = 'delete_player'
+  CREATE_GAME = 'CREATE_GAME',
+  CREATE_PLAYER = 'CREATE_PLAYER',
+  DELETE_PLAYER = 'DELETE_PLAYER'
 }
 
 export interface Event<T, U> {
@@ -22,11 +22,11 @@ export type GameInput = Event<Events.CREATE_GAME, GameConditions>
 export type GameOutput = Event<Events.CREATE_GAME, Game>
 
 export type AddPlayerInput = Event<
-  Events.ADD_PLAYER,
+  Events.CREATE_PLAYER,
   { gameId: string; playerName: string }
 >
 
-export type AddPlayerOutput = Event<Events.ADD_PLAYER, Player>
+export type AddPlayerOutput = Event<Events.CREATE_PLAYER, Player>
 
 export type DeletePlayerInput = Event<
   Events.DELETE_PLAYER,

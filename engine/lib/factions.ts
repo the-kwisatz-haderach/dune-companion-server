@@ -13,12 +13,13 @@ export interface Faction {
   strategy: string
 }
 
-const factions: { [factionId: number]: Faction } = Object.freeze({
-  0: {
+const factions: Faction[] = [
+  {
     name: 'Bene Gesserit',
     shorthand: 'BNG',
     powers: [],
-    description: '',
+    description:
+      'The origins of the Bene Gesserit are not widely known. What is clear is that the Bene Gesserit arose in the political turmoil that followed the Butlerian Jihad, and quickly established themselves as an influential political force. However, during the Butlerian Jihad, the Bene Gesserit already had a Reverend Mother Superior, which seems to show that their hierarchical structure had already formed.',
     itemsAllowed: 4,
     freeRevivals: 0,
     startingSpice: 0,
@@ -26,7 +27,7 @@ const factions: { [factionId: number]: Faction } = Object.freeze({
     strategy: '',
     startingCity: null
   },
-  1: {
+  {
     name: 'House Atreides',
     shorthand: 'ATR',
     powers: [],
@@ -38,7 +39,7 @@ const factions: { [factionId: number]: Faction } = Object.freeze({
     strategy: '',
     startingCity: 0
   },
-  2: {
+  {
     name: 'House Harkonnen',
     shorthand: 'HAR',
     powers: [],
@@ -50,7 +51,7 @@ const factions: { [factionId: number]: Faction } = Object.freeze({
     strategy: '',
     startingCity: 1
   },
-  3: {
+  {
     name: 'Fremen',
     shorthand: 'FRE',
     powers: [],
@@ -62,7 +63,7 @@ const factions: { [factionId: number]: Faction } = Object.freeze({
     strategy: '',
     startingCity: null
   },
-  4: {
+  {
     name: 'Spacing Guild',
     shorthand: 'SGU',
     powers: [],
@@ -74,7 +75,7 @@ const factions: { [factionId: number]: Faction } = Object.freeze({
     strategy: '',
     startingCity: 3
   },
-  5: {
+  {
     name: 'Emperor',
     shorthand: 'EMP',
     powers: [],
@@ -86,6 +87,6 @@ const factions: { [factionId: number]: Faction } = Object.freeze({
     strategy: '',
     startingCity: null
   }
-})
+]
 
 export default factions

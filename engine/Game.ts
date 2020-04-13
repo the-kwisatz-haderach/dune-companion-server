@@ -3,6 +3,7 @@ import { IGame, GameConditions } from './interfaces'
 import Auction from './Auction'
 import Player from './Player'
 import * as lib from './lib'
+import factions from './lib/factions'
 
 export default class Game implements IGame {
   currentTurn: number
@@ -12,6 +13,7 @@ export default class Game implements IGame {
   maxTurns: number
   readonly id: string
   readonly players: Player[]
+  readonly factions = factions
 
   constructor(
     conditions: GameConditions = {
@@ -24,9 +26,9 @@ export default class Game implements IGame {
       id: null
     }
   ) {
-    this.maxTurns = conditions.maxTurns
-    this.maxPlayers = conditions.maxPlayers
-    this.advancedMode = conditions.advancedMode
+    this.maxTurns = conditions.maxTurns || 10
+    this.maxPlayers = conditions.maxPlayers || 6
+    this.advancedMode = conditions.advancedMode || false
     this.currentTurn = conditions.currentTurn || 0
     this.currentPhase = conditions.currentPhase || 0
     this.players = conditions.players || []

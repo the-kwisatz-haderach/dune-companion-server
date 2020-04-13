@@ -959,6 +959,14 @@
     qs "^6.6.0"
     type-is "~1.6.16"
 
+"@marblejs/middleware-io@^3.0.2":
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/@marblejs/middleware-io/-/middleware-io-3.0.2.tgz#982c8be9a1bf96ebbe17104855ceffe5b78cee55"
+  integrity sha512-VbCOFLmJ9+ntUh4SAd5F96ubOA8q9bpizw51gEv41dT8f1E6BsnA17ABenMEjk9OZmKia/nNQa/vciiGeCZLvw==
+  dependencies:
+    "@types/json-schema" "^7.0.3"
+    io-ts "~2.0.1"
+
 "@marblejs/middleware-logger@^3.0.2":
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/@marblejs/middleware-logger/-/middleware-logger-3.0.2.tgz#500dd9fa49596b0eef926ad780311425b153055f"
@@ -4152,6 +4160,11 @@ invert-kv@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/invert-kv/-/invert-kv-2.0.0.tgz#7393f5afa59ec9ff5f67a27620d11c226e3eec02"
   integrity sha512-wPVv/y/QQ/Uiirj/vh3oP+1Ww+AWehmi1g5fFWGPF6IpCBCDVrhgHRMvrLfdYcwDh3QJbGXDW4JAuzxElLSqKA==
+
+io-ts@~2.0.1:
+  version "2.0.6"
+  resolved "https://registry.yarnpkg.com/io-ts/-/io-ts-2.0.6.tgz#49e65cb8508ace0329a45bfa94cd9d29d1e0cce5"
+  integrity sha512-WNfGzm4csMVwL4hX6QlpQWu65SV6GmOUtDo259GKlLYH1cC5bpOENgYHqQIRJ9uR3FuU1RQKDke5STwHZAn3KA==
 
 ip-regex@^2.1.0:
   version "2.1.0"
