@@ -8,20 +8,13 @@ import { CreateGameEffect } from '../types'
 
 const createGameRoom = (
   ctx: EffectContext<WebSocketClientConnection, SchedulerLike>
-) =>
-  tap((game: Game): void => {
-    const rooms = useRoomManager(ctx.ask)
-    rooms.create(game.id)
-  })
+) => tap((game: Game): void => useRoomManager(ctx.ask).create(game.id))
 
 const createGame$: CreateGameEffect = (event$, ctx) =>
   event$.pipe(
     matchEvent(playerActions.CREATE_GAME.type),
     mergeMap<ReturnType<typeof playerActions['CREATE_GAME']>, Promise<Game>>(
-      action => {
-        const gameModule = useGameModule(ctx.ask)
-        return gameModule.createGame(action)
-      }
+      action => useGameModule(ctx.ask).createGame(action)
     ),
     createGameRoom(ctx),
     map(game => engineActions.UPDATE_GAME({ game }))
