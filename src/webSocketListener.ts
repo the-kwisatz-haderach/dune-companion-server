@@ -5,8 +5,6 @@ import gameEffects from './services/game'
 const errorHandler$: WsErrorEffect = event$ =>
   event$.pipe(
     map(error => {
-      console.log('### ERROR ###')
-      console.log(error)
       return {
         type: 'error',
         payload: {

@@ -23,6 +23,7 @@
   "rules": {
     "space-before-function-paren": "off",
     "@typescript-eslint/interface-name-prefix": "off",
+    "@typescript-eslint/explicit-function-return-type": ["off", { "allowTypedFunctionExpressions": true }],
     "no-useless-catch": "off",
     "no-return-assign": "off"
   }

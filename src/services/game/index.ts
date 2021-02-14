@@ -1,3 +1,5 @@
-import { createGame$, addPlayer$, deletePlayer$ } from './game.effects'
+import createGame$ from './effects/createGame'
+import joinGame$ from './effects/joinGame'
+import updateGame$ from './effects/updateGame'
 
-export default [createGame$, addPlayer$, deletePlayer$]
+export default [createGame$, updateGame$, joinGame$]
